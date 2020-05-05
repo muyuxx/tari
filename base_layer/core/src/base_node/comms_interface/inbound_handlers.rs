@@ -47,7 +47,7 @@ use std::{
 };
 use strum_macros::Display;
 use tari_broadcast_channel::Publisher;
-use tari_comms::types::CommsPublicKey;
+use tari_comms::peer_manager::NodeId;
 use tari_crypto::tari_utilities::{hash::Hashable, hex::Hex};
 use tokio::sync::RwLock;
 
