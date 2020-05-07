@@ -439,6 +439,10 @@ impl<'a> DhtActor<'a> {
                 Ok(candidates)
             },
             Propagate(mut exclude) => {
+                // let connections = self
+                //     .connectivity
+                //     .select_connections(ConnectivitySelection::Propagation(config.num_neighbouring_nodes,
+                // config.num_random_propagation_nodes))     .await?;
                 let mut candidates = Self::select_closest_peers_for_propagation(
                     &config,
                     &peer_manager,
