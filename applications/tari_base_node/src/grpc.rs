@@ -310,8 +310,10 @@ impl From<BlockHeader> for base_node_grpc::BlockHeader {
             nonce: h.nonce,
             pow: Some(base_node_grpc::ProofOfWork {
                 pow_algo: match h.pow.pow_algo {
+                    #[cfg(feature = "monero_merge_mining")]
                     PowAlgorithm::Monero => 0,
                     PowAlgorithm::Blake => 1,
+                    _ => 99, // build fails otherwise due to feature flag
                 },
                 accumulated_monero_difficulty: h.pow.accumulated_monero_difficulty.into(),
                 accumulated_blake_difficulty: h.pow.accumulated_blake_difficulty.into(),
